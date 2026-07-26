@@ -1,0 +1,2162 @@
+{
+  "name": "Lead generation system: Google Maps to email scraper with Google Sheets export",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        3552,
+        2288
+      ],
+      "id": "dc6119d3-1778-4a99-bf68-31d5162451f4",
+      "name": "Schedule Trigger5"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data.results",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        4112,
+        2800
+      ],
+      "id": "3409885e-f319-4b58-b553-8f549689e3de",
+      "name": "Split Out4"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1R_YpIUFqydwHkTTGi0yJS2nlRarTNNrP8ykY-W2Cvrc",
+          "mode": "list",
+          "cachedResultName": "AE leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1R_YpIUFqydwHkTTGi0yJS2nlRarTNNrP8ykY-W2Cvrc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1R_YpIUFqydwHkTTGi0yJS2nlRarTNNrP8ykY-W2Cvrc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.data.results.id }}",
+            "Name": "={{ $json.data.results.name }}",
+            "Clinic Type ": "={{ $json.clinic_type }}",
+            "Country": "={{ $json.data.results.country_code }}",
+            "Address": "={{ $json.data.results.address }}",
+            "Phone Number": "={{ $json.data.results.phone_number }}",
+            "Email ": "={{ $json.email }}",
+            "Email Validation": "={{ $json.phone_valid }}",
+            "Website": "={{ $json.data.results.website }}",
+            "Doctor/Owner Name": "={{ $json.doctor_owner }}",
+            "FaceBook": "={{ $json.facebook }}",
+            "Insta": "={{ $json.instagram }}",
+            "Appointment Method": "={{ $json.appointment_method }}",
+            "Reviews Count": "={{ $json.data.results.rating }}",
+            "Follow-up Date": "={{ $json.follow_up_date }}",
+            "City": "={{ $json.city }}",
+            "Call Status": "={{ $json.call_status }}",
+            "Automation Status": "={{ $json.automation_status }}",
+            "Google Rating": "={{ $json.google_rating }}",
+            "Lead Priority": "={{ $json.lead_priority }}",
+            "phone num Validation": "={{ $json.phone_valid }}",
+            "nodes": "={{ $json.notes }}",
+            "X Links": "={{ $json.twitter }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clinic Type ",
+              "displayName": "Clinic Type ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone num Validation",
+              "displayName": "phone num Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email Validation",
+              "displayName": "Email Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Doctor/Owner Name",
+              "displayName": "Doctor/Owner Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FaceBook",
+              "displayName": "FaceBook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Insta",
+              "displayName": "Insta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "X Links",
+              "displayName": "X Links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment Method",
+              "displayName": "Appointment Method",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Automation Status",
+              "displayName": "Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Google Rating",
+              "displayName": "Google Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Reviews Count",
+              "displayName": "Reviews Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Lead Priority",
+              "displayName": "Lead Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nodes",
+              "displayName": "nodes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Call Status",
+              "displayName": "Call Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Follow-up Date",
+              "displayName": "Follow-up Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7328,
+        2608
+      ],
+      "id": "9a7c0b09-aaeb-4af7-b6a6-7a35347f0797",
+      "name": "Append row in sheet8",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pAk4Q4ZehJjnY0On",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://email-intelligence-api.p.rapidapi.com/v1/check",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $json.email }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "email-intelligence-api.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "6689ab4446msh5645120f74f98c6p128afdjsne7d55d90e86b"
+            },
+            {
+              "name": "x-token",
+              "value": "v58lk97d06sqe9lsq4mj4mhfik9k4a"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "example@gmail.com"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        5648,
+        2784
+      ],
+      "id": "0e4ab2fc-ada1-4146-9a0f-6800e04c334e",
+      "name": "Email checker3",
+      "retryOnFail": false,
+      "waitBetweenTries": 100
+    },
+    {
+      "parameters": {
+        "url": "https://api.veriphone.io/v2/verify",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json['data.results'].phone_number }}"
+            },
+            {
+              "name": "key",
+              "value": "C7D9C885DECD4DA88EF60F47A28B41E9"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "phone-number-validator-api1.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "51aa529155msh9eebc9b0e7afe6bp117c28jsn8c80af986fa6"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        4560,
+        2784
+      ],
+      "id": "ae03576f-fc1b-4e88-ba02-7f7d8f5381a1",
+      "name": "Phone number validator2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2009a13-add8-4dae-a4d9-fe32ce231ed2",
+              "name": "data.results",
+              "value": "={{ $('Split Out4').item.json['data.results'] }}",
+              "type": "object"
+            },
+            {
+              "id": "b202dd65-1c9b-4c0a-808f-50c4f49dba57",
+              "name": "Email Validation",
+              "value": "={{ $('Email checker3').item.json.status }}",
+              "type": "string"
+            },
+            {
+              "id": "69b54120-0c4e-4cda-b54c-d4bbb0d8c675",
+              "name": "phone_valid",
+              "value": "={{ $('Phone number validator2').item.json.phone_valid }}",
+              "type": "boolean"
+            },
+            {
+              "id": "de8eb302-963b-4993-ae83-bf9b2adf7ebc",
+              "name": "email",
+              "value": "={{ $json.data.email }}",
+              "type": "string"
+            },
+            {
+              "id": "3763cd3a-7da6-4f6b-92f3-e8f4b9dcfee9",
+              "name": "facebook",
+              "value": "={{ $('Code in JavaScript3').item.json.facebook }}",
+              "type": "string"
+            },
+            {
+              "id": "2ee97db5-88c1-40d0-8cdb-109e3b131c32",
+              "name": "instagram",
+              "value": "={{ $('Code in JavaScript3').item.json.instagram }}",
+              "type": "string"
+            },
+            {
+              "id": "0be7386e-e35e-4880-b4c9-d1d3285ef364",
+              "name": "twitter",
+              "value": "={{ $('Code in JavaScript3').item.json.twitter }}",
+              "type": "string"
+            },
+            {
+              "id": "f609484f-a693-47dc-a390-68cfe035c202",
+              "name": "city",
+              "value": "={{ $('Code in JavaScript3').item.json.city }}",
+              "type": "string"
+            },
+            {
+              "id": "ca43efea-410f-4bab-863c-74589f17f08d",
+              "name": "doctor_owner",
+              "value": "={{ $('Email Availability').item.json.owner_or_doctor_name }}",
+              "type": "string"
+            },
+            {
+              "id": "f025d76d-9616-4946-a1df-13a7e49d0644",
+              "name": "appointment_method",
+              "value": "={{ $('Email Availability').item.json.appointment_method }}",
+              "type": "string"
+            },
+            {
+              "id": "a0d62a90-ef21-4554-a842-b96eb42a5417",
+              "name": "follow_up_date",
+              "value": "={{ $('Email Availability').item.json.follow_up_details }}",
+              "type": "string"
+            },
+            {
+              "id": "97b6e7d2-b144-44fd-8fcc-021dc4d64c05",
+              "name": "clinic_type",
+              "value": "={{ $('Give a Input1').item.json.clinic_type }}",
+              "type": "string"
+            },
+            {
+              "id": "83e00c75-0ad8-42da-b0cc-252bf6ab9a06",
+              "name": "google_rating",
+              "value": "={{ $('Code in JavaScript3').item.json.google_rating }}",
+              "type": "number"
+            },
+            {
+              "id": "16febfdc-b8fc-4c4e-b3b6-008a74b24ffe",
+              "name": "lead_priority",
+              "value": "={{ $('Code in JavaScript3').item.json.lead_priority }}",
+              "type": "string"
+            },
+            {
+              "id": "54e18d07-236d-4304-bcaa-528efbc8f6b7",
+              "name": "automation_status",
+              "value": "={{ $('Code in JavaScript3').item.json.automation_status }}",
+              "type": "string"
+            },
+            {
+              "id": "7ee29d96-e045-4cd0-adb7-54fe375e4e47",
+              "name": "call_status",
+              "value": "={{ $('Code in JavaScript3').item.json.call_status }}",
+              "type": "string"
+            },
+            {
+              "id": "bf147541-aa3e-4274-a17e-7e637a7f91f3",
+              "name": "notes",
+              "value": "={{ $('Code in JavaScript3').item.json.notes }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6224,
+        2768
+      ],
+      "id": "59fb3662-2f89-46a8-bcaf-31946fc61493",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1cIdLMYoZpb7OpW2_QJHroDh4b0xv6oaOt00GLPbgOmQ",
+          "mode": "list",
+          "cachedResultName": "GB Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cIdLMYoZpb7OpW2_QJHroDh4b0xv6oaOt00GLPbgOmQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cIdLMYoZpb7OpW2_QJHroDh4b0xv6oaOt00GLPbgOmQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.data.results.name }}",
+            "Email Validation": "={{ $json['Email Validation'] }}",
+            "City": "={{ $json.city }}",
+            "ID": "={{ $json.data.results.id }}",
+            "Clinic Type ": "={{ $json.clinic_type }}",
+            "Country": "={{ $json.data.results.country_code }}",
+            "Address": "={{ $json.data.results.address }}",
+            "Phone Number": "={{ $json.data.results.phone_number }}",
+            "phone num Validation": "={{ $json.phone_valid }}",
+            "Email ": "={{ $json.email }}",
+            "Website": "={{ $json.data.results.website }}",
+            "Doctor/Owner Name": "={{ $json.doctor_owner }}",
+            "FaceBook": "={{ $json.facebook }}",
+            "Insta": "={{ $json.instagram }}",
+            "X Links": "={{ $json.twitter }}",
+            "Appointment Method": "={{ $json.appointment_method }}",
+            "Automation Status": "={{ $json.automation_status }}",
+            "Google Rating": "={{ $json.google_rating }}",
+            "Lead Priority": "={{ $json.lead_priority }}",
+            "nodes": "={{ $json.notes }}",
+            "Call Status": "={{ $json.call_status }}",
+            "Follow-up Date": "={{ $json.follow_up_date }}",
+            "Reviews Count": "={{ $json.data.results.reviews }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clinic Type ",
+              "displayName": "Clinic Type ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone num Validation",
+              "displayName": "phone num Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email Validation",
+              "displayName": "Email Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Doctor/Owner Name",
+              "displayName": "Doctor/Owner Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FaceBook",
+              "displayName": "FaceBook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Insta",
+              "displayName": "Insta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "X Links",
+              "displayName": "X Links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment Method",
+              "displayName": "Appointment Method",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Automation Status",
+              "displayName": "Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Google Rating",
+              "displayName": "Google Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Reviews Count",
+              "displayName": "Reviews Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Lead Priority",
+              "displayName": "Lead Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nodes",
+              "displayName": "nodes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Call Status",
+              "displayName": "Call Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Follow-up Date",
+              "displayName": "Follow-up Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7360,
+        2784
+      ],
+      "id": "c41f9b7c-9749-4540-9876-2f3067182fa4",
+      "name": "Append row in sheet9",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pAk4Q4ZehJjnY0On",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bd4ba6f1-ec00-4780-8ff5-9bb184bafe12",
+              "name": "countries",
+              "value": "=[\"United Kingdom\", \"UAE\", \"Pakistan\", \"Australia\"]",
+              "type": "array"
+            },
+            {
+              "id": "b5a23254-8402-4f43-a244-1b0ef85a9b6a",
+              "name": "clinic_types",
+              "value": "[\"Dental Clinics\", \"Aesthetic Clinics\", \"Skin Clinics\", \"Cosmetic Clinics\", \"Physiotherapy Clinics\", \"Hair Transplant Clinics\", \"Eye Clinics\", \"Private Medical Clinics\", \"Wellness & Health Centers\"]",
+              "type": "array"
+            },
+            {
+              "id": "8053eaa3-8074-42bc-bac1-46c1547c78ce",
+              "name": "cities",
+              "value": "[\"London\", \"Manchester\", \"Birmingham\", \"Leeds\", \"Bristol\", \"Dubai\", \"Abu Dhabi\", \"Sharjah\", \"Islamabad\", \"Rawalpindi\", \"Lahore\", \"Karachi\", \"Sydney\", \"Melbourne\", \"Brisbane\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3808,
+        2288
+      ],
+      "id": "d1a1b850-80fb-43ad-a004-272d8f9e9570",
+      "name": "Define countries1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define valid country-to-cities mappings to prevent mismatched locations\nconst targetData = [\n  {\n    country: \"United Kingdom\",\n    cities: [\"London\", \"Manchester\", \"Birmingham\", \"Leeds\", \"Bristol\"]\n  },\n  {\n    country: \"UAE\",\n    cities: [\"Dubai\", \"Abu Dhabi\", \"Sharjah\"]\n  },\n  {\n    country: \"Pakistan\",\n    cities: [\"Islamabad\", \"Rawalpindi\", \"Lahore\", \"Karachi\"]\n  },\n  {\n    country: \"Australia\",\n    cities: [\"Sydney\", \"Melbourne\", \"Brisbane\"]\n  }\n];\n\nconst clinicTypes = $input.first().json.clinic_types;\n\n// Build a clean, logically valid list of combinations\nconst combinations = [];\nfor (const group of targetData) {\n  for (const city of group.cities) {\n    for (const clinicType of clinicTypes) {\n      combinations.push({\n        country: group.country,\n        city: city,\n        clinic_type: clinicType\n      });\n    }\n  }\n}\n\n// Pick a random valid combination\nconst randomIndex = Math.floor(Math.random() * combinations.length);\nconst selectedTarget = combinations[randomIndex];\n\nreturn [{ json: selectedTarget }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3984,
+        2288
+      ],
+      "id": "e2885e6e-4bba-4dee-85c7-d31c21ac7215",
+      "name": "Give a Input1"
+    },
+    {
+      "parameters": {
+        "url": "https://google-map-scraper1.p.rapidapi.com/api/places/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "={{ $json.clinic_type }} in {{ $json.city }}{{ $json.country }}"
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "google-map-scraper1.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "51aa529155msh9eebc9b0e7afe6bp117c28jsn8c80af986fa6"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3888,
+        2800
+      ],
+      "id": "e8b3fa66-b27c-41d3-b3ba-f33ba0a095b4",
+      "name": "Get Data1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "32f18748-f7ad-4710-ac80-c9abf2d96413",
+              "leftValue": "={{ $json['data.results'].phone_number }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4336,
+        2800
+      ],
+      "id": "d4acb07a-4884-42c4-ac81-6b6c23c11c29",
+      "name": "Number Availability1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "26c9779d-caea-453c-9f1c-2fe8a60b9e14",
+              "leftValue": "={{ $json.phone_valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4784,
+        2784
+      ],
+      "id": "e1144d1e-97a9-46f4-be78-f2392465d77f",
+      "name": "Check Validity3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2009a13-add8-4dae-a4d9-fe32ce231ed2",
+              "name": "data.results",
+              "value": "={{ $('Split Out4').item.json['data.results'] }}",
+              "type": "object"
+            },
+            {
+              "id": "3196787e-5679-42a6-8e79-15bbe00415fc",
+              "name": "phone_valid",
+              "value": "={{ $json.phone_valid }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4992,
+        2768
+      ],
+      "id": "b5410fd6-02cb-483e-91ee-d1e1252b1a9f",
+      "name": "Transfer Data1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4e0bae2c-96a3-4099-8e0d-a0d463f5d648",
+              "leftValue": "={{ $json.data.results.website }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4960,
+        2352
+      ],
+      "id": "9a381c19-7ddc-4a1d-8df6-bfdb763428d3",
+      "name": "Web Availability1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c9b21cd3-9388-4ffa-8d7a-743ca476878a",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        5888,
+        2784
+      ],
+      "id": "506001b5-b71e-4f49-9f55-f3d4da0c0621",
+      "name": "Check Validity4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f9cd5cc9-4976-47cb-ab47-e9eec745a36c",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        5424,
+        2800
+      ],
+      "id": "1b0b129b-227a-4525-b788-7af637c5aea4",
+      "name": "Email Availability"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19OpOabhn6nBU2HMV32IuIT61Ozj_JM8vtYvYD4KZe9s",
+          "mode": "list",
+          "cachedResultName": "AU leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19OpOabhn6nBU2HMV32IuIT61Ozj_JM8vtYvYD4KZe9s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19OpOabhn6nBU2HMV32IuIT61Ozj_JM8vtYvYD4KZe9s/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.data.results.id }}",
+            "Name": "={{ $json.data.results.name }}",
+            "Clinic Type ": "={{ $json.clinic_type }}",
+            "Country": "={{ $json.data.results.country_code }}",
+            "City": "={{ $json.city }}",
+            "Address": "={{ $json.data.results.address }}",
+            "Phone Number": "={{ $json.data.results.phone_number }}",
+            "Email ": "={{ $json.email }}",
+            "Email Validation": "={{ $json['Email Validation'] }}",
+            "Website": "={{ $json.data.results.website }}",
+            "Doctor/Owner Name": "={{ $json.doctor_owner }}",
+            "FaceBook": "={{ $json.facebook }}",
+            "Insta": "={{ $json.instagram }}",
+            "Appointment Method": "={{ $json.appointment_method }}",
+            "Reviews Count": "={{ $json.data.results.rating }}",
+            "Follow-up Date": "={{ $json.follow_up_date }}",
+            "Lead Priority": "={{ $json.lead_priority }}",
+            "Google Rating": "={{ $json.google_rating }}",
+            "phone num Validation": "={{ $json.phone_valid }}",
+            "X Links": "={{ $json.twitter }}",
+            "nodes": "={{ $json.notes }}",
+            "Call Status": "={{ $json.call_status }}",
+            "Automation Status": "={{ $json.automation_status }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clinic Type ",
+              "displayName": "Clinic Type ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone num Validation",
+              "displayName": "phone num Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email Validation",
+              "displayName": "Email Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Doctor/Owner Name",
+              "displayName": "Doctor/Owner Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FaceBook",
+              "displayName": "FaceBook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Insta",
+              "displayName": "Insta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "X Links",
+              "displayName": "X Links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment Method",
+              "displayName": "Appointment Method",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Automation Status",
+              "displayName": "Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Google Rating",
+              "displayName": "Google Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Reviews Count",
+              "displayName": "Reviews Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Lead Priority",
+              "displayName": "Lead Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nodes",
+              "displayName": "nodes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Call Status",
+              "displayName": "Call Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Follow-up Date",
+              "displayName": "Follow-up Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7344,
+        2944
+      ],
+      "id": "1ae54e66-bc0c-439c-8189-83784fac3e90",
+      "name": "Append row in sheet10",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pAk4Q4ZehJjnY0On",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "132PH_GXvvRGrcYs1uRPA0fePKSMTnMs-nQHFpDDKMik",
+          "mode": "list",
+          "cachedResultName": "PK leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/132PH_GXvvRGrcYs1uRPA0fePKSMTnMs-nQHFpDDKMik/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/132PH_GXvvRGrcYs1uRPA0fePKSMTnMs-nQHFpDDKMik/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.data.results.id }}",
+            "Name": "={{ $json.data.results.name }}",
+            "Clinic Type ": "={{ $json.clinic_type }}",
+            "Country": "={{ $json.data.results.country_code }}",
+            "Address": "={{ $json.data.results.address }}",
+            "Phone Number": "={{ $json.data.results.phone_number }}",
+            "Email ": "={{ $json.email }}",
+            "Email Validation": "={{ $json['Email Validation'] }}",
+            "phone num Validation": "={{ $json.phone_valid }}",
+            "Website": "={{ $json.data.results.website }}",
+            "Doctor/Owner Name": "={{ $json.doctor_owner }}",
+            "FaceBook": "={{ $json.facebook }}",
+            "Insta": "={{ $json.instagram }}",
+            "Appointment Method": "={{ $json.appointment_method }}",
+            "Reviews Count": "={{ $json.data.results.rating }}",
+            "Follow-up Date": "={{ $json.follow_up_date }}",
+            "X Links": "={{ $json.twitter }}",
+            "nodes": "={{ $json.notes }}",
+            "Automation Status": "={{ $json.automation_status }}",
+            "Call Status": "={{ $json.call_status }}",
+            "City": "={{ $json.city }}",
+            "Google Rating": "={{ $json.google_rating }}",
+            "Lead Priority": "={{ $json.lead_priority }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clinic Type ",
+              "displayName": "Clinic Type ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone num Validation",
+              "displayName": "phone num Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email Validation",
+              "displayName": "Email Validation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Doctor/Owner Name",
+              "displayName": "Doctor/Owner Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FaceBook",
+              "displayName": "FaceBook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Insta",
+              "displayName": "Insta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "X Links",
+              "displayName": "X Links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment Method",
+              "displayName": "Appointment Method",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Automation Status",
+              "displayName": "Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Google Rating",
+              "displayName": "Google Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Reviews Count",
+              "displayName": "Reviews Count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Lead Priority",
+              "displayName": "Lead Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nodes",
+              "displayName": "nodes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Call Status",
+              "displayName": "Call Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Follow-up Date",
+              "displayName": "Follow-up Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7344,
+        3136
+      ],
+      "id": "086cbada-a7f3-4839-a9d1-58c332f2fb82",
+      "name": "Append row in sheet11",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pAk4Q4ZehJjnY0On",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  try {\n    let groqData = {};\n    if (item.json.choices && item.json.choices[0]) {\n      groqData = JSON.parse(item.json.choices[0].message.content);\n    }\n    \n    const originalData = item.pairedItem ? $('Web Availability1').item.json : {};\n\n    const rawSocial = groqData.social_media_links || {};\n    const fbVal = rawSocial[\"social_media_links[0]\"] || rawSocial.facebook || groqData.facebook || \"\";\n    const igVal = rawSocial[\"social_media_links[1]\"] || rawSocial.instagram || groqData.instagram || \"\";\n    const twVal = rawSocial[\"social_media_links[2]\"] || rawSocial.twitter || groqData.twitter || \"\";\n\n    delete groqData.social_media_links;\n\n    const addressStr = originalData.data?.results?.address || item.json.address || \"\";\n    let cityVal = groqData.city || \"\";\n    if (!cityVal && addressStr) {\n      if (addressStr.toLowerCase().includes(\"sharjah\")) cityVal = \"Sharjah\";\n      else if (addressStr.toLowerCase().includes(\"dubai\")) cityVal = \"Dubai\";\n      else if (addressStr.toLowerCase().includes(\"karachi\")) cityVal = \"Karachi\";\n    }\n\n    return {\n      json: {\n        id: originalData.data?.results?.id || item.json.id || null,\n        name: originalData.data?.results?.name || item.json.name || null,\n        phone_number: originalData.data?.results?.phone_number || item.json.phone_number || null,\n        address: addressStr,\n        zone: originalData.data?.results?.zone || item.json.zone || null,\n        country_code: originalData.data?.results?.country_code || item.json.country_code || null,\n        url: originalData.data?.results?.url || item.json.url || null,\n        rating: originalData.data?.results?.rating || item.json.rating || null,\n        status: originalData.data?.results?.media?.status || item.json.status || null,\n        opening_status: originalData.data?.results?.media?.opening_status || item.json.opening_status || null,\n        website: originalData.data?.results?.media?.website || item.json.website || null,\n        ...groqData,\n        facebook: fbVal,\n        instagram: igVal,\n        twitter: twVal,\n        city: cityVal,\n        call_status: groqData.call_status || \"Pending\",\n        automation_status: groqData.automation_status || \"Not Started\",\n        notes: groqData.notes || \"\"\n      }\n    };\n  } catch (error) {\n    return { json: { ...item.json, error: \"Failed to structure output\" } };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5504,
+        2336
+      ],
+      "id": "2d1daee0-86bb-4255-b1a5-faf9b7347092",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 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"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"llama-3.3-70b-versatile\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a precise data extraction assistant. Given the business name and website provided, extract the required fields and return them strictly as a valid JSON object containing these exact keys: \\\"email\\\", \\\"owner_or_doctor_name\\\", \\\"social_media_links\\\", \\\"appointment_method\\\", \\\"google_rating\\\", \\\"lead_priority\\\", \\\"lead_status\\\", \\\"follow_up_details\\\", \\\"call_status\\\", \\\"automation_status\\\", \\\"notes\\\".\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Business Name: {{ $json.data.results.name }}\\nWebsite URL: {{ $json.data.results.website }}\"\n    }\n  ],\n  \"response_format\": { \"type\": \"json_object\" }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        5232,
+        2336
+      ],
+      "id": "4be803e3-9a88-44fd-be24-7561b3c9e94d",
+      "name": "Get Data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ec7f513d-5798-4b9e-8e0e-3ee47660bd96",
+              "leftValue": "={{ $json.data.results.country_code }}",
+              "rightValue": "AE",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        6912,
+        2608
+      ],
+      "id": "748a4221-c263-43a5-a2e7-54696ba94395",
+      "name": "AE"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9e96cbd7-d409-4732-ab7f-b842b2ed1bab",
+              "leftValue": "={{ $json.data.results.country_code }}",
+              "rightValue": "GB",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        6912,
+        2768
+      ],
+      "id": "2c8ff12f-cbdb-433a-8def-95bbc06128b2",
+      "name": "GB"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3a559b62-cd94-4955-9fee-ea3d8fae2624",
+              "leftValue": "={{ $json.data.results.country_code }}",
+              "rightValue": "AU",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        6896,
+        2944
+      ],
+      "id": "a55f8211-6bdd-4b17-8090-69f210716718",
+      "name": "AU"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "8b37c903-4486-4df8-9fe4-13da655b537e",
+              "leftValue": "={{ $json.data.results.country_code }}",
+              "rightValue": "PK",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        6912,
+        3152
+      ],
+      "id": "f4480323-2391-4b5d-b6c9-52a8b0214813",
+      "name": "PK"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger5": {
+      "main": [
+        [
+          {
+            "node": "Define countries1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out4": {
+      "main": [
+        [
+          {
+            "node": "Number Availability1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email checker3": {
+      "main": [
+        [
+          {
+            "node": "Check Validity4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Phone number validator2": {
+      "main": [
+        [
+          {
+            "node": "Check Validity3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "AE",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AU",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define countries1": {
+      "main": [
+        [
+          {
+            "node": "Give a Input1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Give a Input1": {
+      "main": [
+        [
+          {
+            "node": "Get Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Data1": {
+      "main": [
+        [
+          {
+            "node": "Split Out4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Number Availability1": {
+      "main": [
+        [
+          {
+            "node": "Phone number validator2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Validity3": {
+      "main": [
+        [
+          {
+            "node": "Transfer Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transfer Data1": {
+      "main": [
+        [
+          {
+            "node": "Web Availability1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web Availability1": {
+      "main": [
+        [
+          {
+            "node": "Get Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Validity4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Availability": {
+      "main": [
+        [
+          {
+            "node": "Email checker3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Email Availability",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Data": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AE": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GB": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AU": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PK": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "6b266de4-44d8-4265-90ca-daa71f1f9c1c",
+  "meta": {
+    "templateId": "5385",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e5589895fd9d0b9926973e5dbe971a34cb225db097967919abb57f946142b660"
+  },
+  "nodeGroups": [],
+  "id": "PJETqTnp0Hp4kU1b",
+  "tags": []
+}
